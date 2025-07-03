@@ -1,0 +1,18 @@
+# Ignore build and cache files
+bin/
+obj/
+*.pdb
+*.user
+*.suo
+*.cache
+.vs/
+.idea/
+
+# Ignore installer artifacts
+Installer/
+InstallerSource/
+*.exe
+
+# Ignore Python caches
+__pycache__/
+*.pyc
