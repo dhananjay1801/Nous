@@ -16,8 +16,7 @@ def main():
     MODEL = "llama3.2"
     # print("whoami")
     messages = [
-    {"role": "user", "content": " Dont write anything other than the single command in output. The command is to be ran in CMD do not add anywhere in the code, write the command only to know"+prompt}
-    # {"role": "user", "content": " Dont write anything other than the single command in output. The command is to be ran in CMD do not add anywhere in the code, write the command only to know"+prompt}
+    {"role": "user", "content": " Dont write anything other than the single command in output. The command is to be ran in CMD do not add anywhere in the code, write the command only to know"+prompt+"Do not add any single apstrophes or anything else JUST THE RAW COMMAND which I can copy paste into terminal"}
         ]
     payload = {
         "model": MODEL,
