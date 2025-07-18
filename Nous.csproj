@@ -11,7 +11,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="cert.pem" />
+		<None Remove="client_bridge.py" />
 		<None Remove="explainer.py" />
+		<None Remove="Log.txt" />
 		<None Remove="Nous.ico" />
 	</ItemGroup>
 
@@ -28,6 +31,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Resource Include="Log.txt">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
 		<Resource Include="Nous.ico" />
 	</ItemGroup>
 
@@ -36,10 +42,18 @@
 		<Content Include="backend.py">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+		<Content Include="client_bridge.py">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="explainer.py">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="cert.pem">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
 

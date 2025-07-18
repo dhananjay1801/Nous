@@ -1,18 +1,27 @@
-# Ignore build and cache files
-bin/
-obj/
-*.pdb
-*.user
-*.suo
-*.cache
-.vs/
-.idea/
-
-# Ignore installer artifacts
-Installer/
-InstallerSource/
-*.exe
-
-# Ignore Python caches
 __pycache__/
 *.pyc
+*.log
+*.pfx
+*.pem
+*.crt
+*.key
+Certs/
+*.exe
+.idea/
+.vscode/
+bin/
+obj/
+InstallerSource/
+*.suo
+*.user
+# Ignore Visual Studio/JetBrains files
+.vs/
+*.user
+*.suo
+
+# Ignore build artifacts
+bin/
+obj/
+
+# Ignore logs
+Log.txt
