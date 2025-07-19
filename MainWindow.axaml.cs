@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Net.Security;
 using System.Net.Sockets;
 using System.Globalization;
+using System.Collections.Generic;
+using Avalonia.Threading;
 
 
 namespace Nous
@@ -31,10 +33,12 @@ namespace Nous
         {
             string ip = IpInput?.Text?.Trim() ?? string.Empty;
             string prompt = PromptInput?.Text?.Trim() ?? string.Empty;
+            string[] ipArray = ip.Split(',');
 
-            if (string.IsNullOrEmpty(ip))
+
+            if (string.IsNullOrEmpty(ip) || (ipArray.Length == 0))
             {
-                OutputBox.Text = "Please enter the IP!";
+                OutputBox.Text = "Please enter at least 1 IP!";
                 Logger.EWrite("NO VALID IP, terminating program....");
                 return;
             }
@@ -44,18 +48,84 @@ namespace Nous
                 Logger.EWrite("NO VALID prompt, terminating program....");
                 return;
             }
-            Logger.SWrite($"Working for the IP: {ip} ; PROMPT: {prompt}");
+
+            Logger.SWrite($"Working for the IPs: {ip} ; PROMPT: {prompt}");
             // Generate command using backend.py (Stratos logic)
             string command = await GenerateCommand(prompt);
 
             if (string.IsNullOrEmpty(command))
             {
-                OutputBox.Text = "Failed to generate command!";
+                OutputBox.Text = "Check backend.py! No command generated";
+                Logger.EWrite("Error: No command generated from backend.py");
                 return;
             }
-            string result = await SendCommand(ip, command);
-            string finalOutput = await ProcessWithAI(prompt,result);
-            OutputBox.Text = finalOutput;
+            // ----------FOR LOOP, FCFS, NOT GUD FOR MULTIPLE EXECUTIONS------------
+
+
+            //string finalOutput = "";
+            //string result;
+            ////for loop here, append multiple IP's output in the result 
+            //for (int i = 0; i < ipArray.Length; i++)
+            //{
+            //    result = await SendCommand(ipArray[i], command);
+            //    finalOutput += ipArray[i] + " : " + await ProcessWithAI(prompt, result) + "\n\n";
+            //}
+            //OutputBox.Text = finalOutput;
+            // Multithreaded broadcast and AI processing
+
+
+            //----------FOR LOOP END, FCFS, NOT GUD FOR MULTIPLE EXECUTIONS------------
+
+            //Now using multi threading to process parallely and print at once
+            //List<Task<string>> tasks = new();
+
+            //foreach (var iterator_ip in ipArray)
+            //{
+            //    tasks.Add(Task.Run(async () =>
+            //    {
+            //        try
+            //        {
+            //            var rawOutput = await SendCommand(iterator_ip, command);
+            //            var explained = await ProcessWithAI(prompt, rawOutput);
+            //            Logger.SWrite($"Generated for IP :{iterator_ip} --> {explained}");
+            //            return $"{iterator_ip} : {explained}";
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Logger.EWrite($"Multi-threading error for {iterator_ip} : {ex.Message}");
+            //            return $"{iterator_ip} : Error - {ex.Message}. Check logs.";
+            //        }
+            //    }));
+            //}
+
+            //var results = await Task.WhenAll(tasks);
+            //OutputBox.Text = string.Join("\n\n", results);
+            void AppendOutput(string text)
+            {
+                Dispatcher.UIThread.Post(() =>
+                {
+                    OutputBox.Text += text + "\n\n";
+                });
+            }
+
+            foreach (var iterator_ip in ipArray)
+            {
+                _ = Task.Run(async () =>
+                {
+                    try
+                    {
+                        var rawOutput = await SendCommand(iterator_ip, command);
+                        var explained = await ProcessWithAI(prompt, rawOutput);
+                        AppendOutput($"{iterator_ip} : {explained}");
+                    }
+                    catch (Exception ex)
+                    {
+                        AppendOutput($"{iterator_ip} : Error - {ex.Message}");
+                    }
+                });
+            }
+
+
         }
 
         private async Task<string> GenerateCommand(string prompt)
