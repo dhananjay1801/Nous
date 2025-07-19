@@ -76,7 +76,7 @@ namespace Nous
 
             //----------FOR LOOP END, FCFS, NOT GUD FOR MULTIPLE EXECUTIONS------------
 
-            //Now using multi threading to process parallely and print at once
+            //------------Now using multi threading to process parallely and print at once------------
             //List<Task<string>> tasks = new();
 
             //foreach (var iterator_ip in ipArray)
@@ -100,10 +100,15 @@ namespace Nous
 
             //var results = await Task.WhenAll(tasks);
             //OutputBox.Text = string.Join("\n\n", results);
+
+
+            //------------Now proper multithreading + parallel output in the outputbox as well------------
+      
             void AppendOutput(string text)
             {
                 Dispatcher.UIThread.Post(() =>
                 {
+                    Logger.SWrite($"Output generated in the box: {text}");
                     OutputBox.Text += text + "\n\n";
                 });
             }
@@ -114,16 +119,20 @@ namespace Nous
                 {
                     try
                     {
+                        //Logger.SWrite($"Sending {iterator_ip.ToString()}");
                         var rawOutput = await SendCommand(iterator_ip, command);
                         var explained = await ProcessWithAI(prompt, rawOutput);
+                        Logger.SWrite($"Appending output: {iterator_ip} : {explained}");
                         AppendOutput($"{iterator_ip} : {explained}");
                     }
                     catch (Exception ex)
                     {
+                        Logger.EWrite($"ERROR, exception in task handling for the IP ({iterator_ip}): {ex.Message}");
                         AppendOutput($"{iterator_ip} : Error - {ex.Message}");
                     }
                 });
             }
+            //------------Multithreading closed------------
 
 
         }
