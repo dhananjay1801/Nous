@@ -25,7 +25,7 @@ namespace Nous
             Logger.SWrite("---------- PROGRAM STARTED ----------");
             InitializeComponent();
 
-            this.Icon = new WindowIcon("E:/Coding/Avalonia/Nous/Nous.ico");
+            this.Icon = new WindowIcon("D:/Project stuff/Nous/Nous.ico");
 
         }
 
