@@ -7,11 +7,11 @@
 
     <Grid RowDefinitions="Auto,Auto,Auto,Auto" Margin="20">
 
-        <!-- IP Address Input -->
+        <!-- Hashcode Input -->
         <TextBox x:Name="IpInput" Grid.Row="0" Margin="0,0,0,10"
                  Background="Black" Foreground="White"
                  BorderBrush="Red" CaretBrush="Red"
-                 FontSize="16" Watermark="Enter IP Address..." />
+                 FontSize="16" Watermark="Enter Hashcode..." />
 
         <!-- Prompt Input -->
         <TextBox x:Name="PromptInput" Grid.Row="1" Margin="0,0,0,10"
