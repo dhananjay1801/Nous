@@ -28,6 +28,7 @@
 			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
 		</PackageReference>
 		<AvaloniaResource Include="Nous.ico" />
+		<PackageReference Include="MySql.Data" Version="9.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>

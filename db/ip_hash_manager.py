@@ -13,7 +13,7 @@ DB_CONFIG = {
 def generate_hash(ip):
     current_hour = datetime.utcnow().strftime('%Y-%m-%d-%H')
     hash_input = f"{ip}-{current_hour}"
-    return hashlib.sha256(hash_input.encode()).hexdigest()[:8]
+    return hashlib.sha256(hash_input.encode()).hexdigest()[:8].upper()
 
 def insert_ip(ip):
     hashcode = generate_hash(ip)

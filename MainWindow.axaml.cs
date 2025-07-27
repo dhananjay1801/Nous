@@ -31,15 +31,14 @@ namespace Nous
 
         private async void OnSubmitClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            string ip = IpInput?.Text?.Trim() ?? string.Empty;
+            string hashcodes = IpInput?.Text?.Trim() ?? string.Empty;
             string prompt = PromptInput?.Text?.Trim() ?? string.Empty;
-            string[] ipArray = ip.Split(',');
+            string[] hashcodeArray = hashcodes.Split(',');
 
-
-            if (string.IsNullOrEmpty(ip) || (ipArray.Length == 0))
+            if (string.IsNullOrEmpty(hashcodes) || (hashcodeArray.Length == 0))
             {
-                OutputBox.Text = "Please enter at least 1 IP!";
-                Logger.EWrite("NO VALID IP, terminating program....");
+                OutputBox.Text = "Please enter at least 1 hashcode!";
+                Logger.EWrite("NO VALID HASHCODE, terminating program....");
                 return;
             }
             if (string.IsNullOrEmpty(prompt))
@@ -49,8 +48,7 @@ namespace Nous
                 return;
             }
 
-            Logger.SWrite($"Working for the IPs: {ip} ; PROMPT: {prompt}");
-            // Generate command using backend.py (Stratos logic)
+            Logger.SWrite($"Working for the Hashcodes: {hashcodes} ; PROMPT: {prompt}");
             string command = await GenerateCommand(prompt);
 
             if (string.IsNullOrEmpty(command))
@@ -59,51 +57,9 @@ namespace Nous
                 Logger.EWrite("Error: No command generated from backend.py");
                 return;
             }
-            // ----------FOR LOOP, FCFS, NOT GUD FOR MULTIPLE EXECUTIONS------------
 
+            var manager = new IpHashManager();
 
-            //string finalOutput = "";
-            //string result;
-            ////for loop here, append multiple IP's output in the result 
-            //for (int i = 0; i < ipArray.Length; i++)
-            //{
-            //    result = await SendCommand(ipArray[i], command);
-            //    finalOutput += ipArray[i] + " : " + await ProcessWithAI(prompt, result) + "\n\n";
-            //}
-            //OutputBox.Text = finalOutput;
-            // Multithreaded broadcast and AI processing
-
-
-            //----------FOR LOOP END, FCFS, NOT GUD FOR MULTIPLE EXECUTIONS------------
-
-            //------------Now using multi threading to process parallely and print at once------------
-            //List<Task<string>> tasks = new();
-
-            //foreach (var iterator_ip in ipArray)
-            //{
-            //    tasks.Add(Task.Run(async () =>
-            //    {
-            //        try
-            //        {
-            //            var rawOutput = await SendCommand(iterator_ip, command);
-            //            var explained = await ProcessWithAI(prompt, rawOutput);
-            //            Logger.SWrite($"Generated for IP :{iterator_ip} --> {explained}");
-            //            return $"{iterator_ip} : {explained}";
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            Logger.EWrite($"Multi-threading error for {iterator_ip} : {ex.Message}");
-            //            return $"{iterator_ip} : Error - {ex.Message}. Check logs.";
-            //        }
-            //    }));
-            //}
-
-            //var results = await Task.WhenAll(tasks);
-            //OutputBox.Text = string.Join("\n\n", results);
-
-
-            //------------Now proper multithreading + parallel output in the outputbox as well------------
-      
             void AppendOutput(string text)
             {
                 Dispatcher.UIThread.Post(() =>
@@ -113,28 +69,30 @@ namespace Nous
                 });
             }
 
-            foreach (var iterator_ip in ipArray)
+            foreach (var hashcode in hashcodeArray)
             {
                 _ = Task.Run(async () =>
                 {
                     try
                     {
-                        //Logger.SWrite($"Sending {iterator_ip.ToString()}");
-                        var rawOutput = await SendCommand(iterator_ip, command);
+                        string? ip = manager.GetIpByHashcode(hashcode.Trim());
+                        if (string.IsNullOrEmpty(ip))
+                        {
+                            AppendOutput($"{hashcode} : Error - No IP found for this hashcode");
+                            return;
+                        }
+                        var rawOutput = await SendCommand(ip, command);
                         var explained = await ProcessWithAI(prompt, rawOutput);
-                        Logger.SWrite($"Appending output: {iterator_ip} : {explained}");
-                        AppendOutput($"{iterator_ip} : {explained}");
+                        Logger.SWrite($"Appending output: {hashcode} : {explained}");
+                        AppendOutput($"{hashcode} : {explained}");
                     }
                     catch (Exception ex)
                     {
-                        Logger.EWrite($"ERROR, exception in task handling for the IP ({iterator_ip}): {ex.Message}");
-                        AppendOutput($"{iterator_ip} : Error - {ex.Message}");
+                        Logger.EWrite($"ERROR, exception in task handling for the hashcode ({hashcode}): {ex.Message}");
+                        AppendOutput($"{hashcode} : Error - {ex.Message}");
                     }
                 });
             }
-            //------------Multithreading closed------------
-
-
         }
 
         private async Task<string> GenerateCommand(string prompt)
