@@ -8,7 +8,7 @@ from datetime import datetime
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'admin',  # Change this to your MySQL password
+    'password': 'root',  # Change this to your MySQL password
     'database': 'project'
 }
 

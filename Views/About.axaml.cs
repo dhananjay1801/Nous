@@ -1,10 +1,10 @@
 ﻿using Avalonia.Controls;
 
-namespace Nous
+namespace Nous.Views
 {
-    public partial class MainWindow : Window
+    public partial class AboutWindow : Window
     {
-        public MainWindow()
+        public AboutWindow()
         {
             InitializeComponent();
         }

@@ -22,9 +22,10 @@ namespace Nous
             {
                 try
                 {
-                    Console.WriteLine("Updating hashcodes...");
+                    //Console.WriteLine("Updating hashcodes...");
+                   
                     _manager.UpdateHashcodes();
-                    Console.WriteLine($"Update complete. Waiting for {_intervalSeconds / 60} minutes.");
+                    //Console.WriteLine($"Update complete. Waiting for {_intervalSeconds / 60} minutes.");
                 }
                 catch (Exception e)
                 {

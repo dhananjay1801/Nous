@@ -9,7 +9,8 @@ namespace Nous
 {
     public class IpHashManager
     {
-        private readonly string _connectionString = "server=localhost;user=root;password=admin;database=project;";
+        //UPDATE THE PASSWORD HEREEE
+        private readonly string _connectionString = "server=localhost;user=root;password=root;database=project;";
 
         public string GenerateHash(string ip)
         {
@@ -20,7 +21,7 @@ namespace Nous
                 var bytes = Encoding.UTF8.GetBytes(hashInput);
                 var hash = sha256.ComputeHash(bytes);
                 var sb = new StringBuilder();
-                for (int i = 0; i < 4; i++) // 8 hex chars = 4 bytes
+                for (int i = 0; i < 4; i++) 
                     sb.Append(hash[i].ToString("x2"));
                 return sb.ToString().ToUpper();
             }
