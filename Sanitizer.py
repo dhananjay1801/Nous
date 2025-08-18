@@ -2,7 +2,7 @@ import sys
 import yaml
 import os
 
-AVOIDED_FILE = "data\Avoided.yml"
+AVOIDED_FILE = "data/Avoided.yml"
 
 def load_avoided_commands():
     if not os.path.exists(AVOIDED_FILE):

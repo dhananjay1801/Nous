@@ -10,7 +10,7 @@ from datetime import datetime
 # -----------------------------------------------------------
 # Logging setup (fixed)
 # -----------------------------------------------------------
-LOG_PATH = r"E:\College Project\Min_Nous\Nous\Log.txt"
+LOG_PATH = r"D:\Project stuff\Nous\Log.txt"
 
 def _ensure_log_file():
     """Ensure that the log directory and file exist."""

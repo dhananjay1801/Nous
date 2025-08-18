@@ -66,7 +66,7 @@ namespace Nous.Views
         {
             Logger.SWrite("StartServer button clicked.");
             // Run Python server in background
-            string scriptPath = @"E:\College Project\Min_Nous\Nous\api_server.py";
+            string scriptPath = @"D:\Project stuff\Nous\api_server.py";
 
             try
             {
