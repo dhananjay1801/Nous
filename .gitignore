@@ -34,4 +34,5 @@ vector_db/
 #Ignore SQL DB
 *.sql
 
+# gemini api key
 .env
