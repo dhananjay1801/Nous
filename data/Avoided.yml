@@ -1,0 +1,76 @@
+dangerous_commands:
+  - "shutdown"
+  - "poweroff"
+  - "halt"
+  - "reboot"
+  - "systemctl poweroff"
+  - "systemctl reboot"
+
+  - "rm -rf /"
+  - "rm -rf /*"
+  - "rm -rf ~"
+  - "rm -rf *"
+  - "del /f /s /q C:\\"
+  - "rmdir /s /q C:\\"
+
+  - "mkfs"
+  - "format"
+  - "diskpart"
+  - "fdisk"
+  - "wipefs"
+
+  - "useradd"
+  - "adduser"
+  - "usermod"
+  - "passwd"
+  - "net user"
+
+  - "sudo su"
+  - "sudo -i"
+  - "sudo bash"
+  - "su root"
+  - "psexec"
+
+  - "ifconfig down"
+  - "ip link set .* down"
+  - "iptables -F"
+  - "ufw disable"
+  - "netsh advfirewall set allprofiles state off"
+
+  - "wget .*malware"
+  - "curl .*malware"
+  - "Invoke-WebRequest .*exe"
+  - "bitsadmin /transfer"
+
+  - "scp .*@"
+  - "ftp .*"
+  - "nc .*"
+  - "netcat .*"
+  - "powershell .*Base64"
+
+  - "eval\\("
+  - "exec\\("
+  - "os.system"
+  - "subprocess.Popen"
+  - "Invoke-Expression"
+
+  - "rm -f /var/log/*"
+  - "echo .* > /var/log/"
+  - "wevtutil cl"
+
+  - "insmod"
+  - "rmmod"
+  - "modprobe"
+  - "bcdedit"
+
+  - "gpg --encrypt"
+  - "openssl enc"
+  - "zip .* -e"
+
+  - ":(){ :|:& };:"
+  - "perl -e 'fork while sleep'"
+
+metadata:
+  updated: "2025-08-14"
+  author: "Security Policy - Omkar's AI System"
+  enforcement: "deny"

@@ -11,6 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Assets\Fonts\PrinceOfPersia.ttf" />
 		<None Remove="cert.pem" />
 		<None Remove="client_bridge.py" />
 		<None Remove="explainer.py" />
@@ -57,5 +58,11 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
+	<ItemGroup>
+	  <AvaloniaResource Include="Assets\Fonts\PrinceOfPersia.ttf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </AvaloniaResource>
+	</ItemGroup>
+
 
 </Project>

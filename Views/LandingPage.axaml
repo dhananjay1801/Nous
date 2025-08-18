@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Nous.Views.LandingPage"
+             Background="#0A0F0F">
+
+	<Grid>
+		<!-- Title -->
+		<TextBlock Text="NOUS"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,80,0,0"
+                   FontSize="36"
+                   Foreground="#6FD1C8"
+                   FontWeight="Normal"
+                   TextAlignment="Center"
+                   FontFamily="Segoe UI" />
+
+		<!-- Outer Border containing menu + timer -->
+		<Border BorderBrush="#1B3B3A" BorderThickness="1" Padding="20"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                CornerRadius="4">
+			<Grid Width="400" Height="200">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="2*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<!-- Menu Options -->
+				<StackPanel Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Spacing="15">
+
+					<Border BorderBrush="#6FD1C8" BorderThickness="1" Padding="10">
+						<TextBlock Text="START SERVER"
+                                   FontSize="18"
+                                   Foreground="#6FD1C8"
+                                   Cursor="Hand"
+                                   PointerPressed="StartServer_Click"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"/>
+					</Border>
+
+					<Border BorderBrush="#6FD1C8" BorderThickness="1" Padding="10">
+						<TextBlock Text="ACCESS GATE"
+                                   FontSize="18"
+                                   Foreground="#6FD1C8"
+                                   Cursor="Hand"
+                                   PointerPressed="AccessGate_Click"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"/>
+					</Border>
+
+					<Border BorderBrush="#6FD1C8" BorderThickness="1" Padding="10">
+						<TextBlock Text="ABOUT"
+                                   FontSize="18"
+                                   Foreground="#6FD1C8"
+                                   Cursor="Hand"
+                                   PointerPressed="About_Click"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"/>
+					</Border>
+
+				</StackPanel>
+
+				<!-- Timer -->
+				<TextBlock x:Name="TimerText"
+                           Grid.Column="1"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="01:00:00"
+                           FontSize="20"
+                           Foreground="#6FD1C8"
+                           FontFamily="Consolas"/>
+			</Grid>
+		</Border>
+
+		<!-- Version Info -->
+		<TextBlock Text="Nous - v.3.0.0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Margin="20,0,0,20"
+                   Foreground="#6FD1C8"
+                   FontSize="14"
+                   FontFamily="Segoe UI" />
+	</Grid>
+</UserControl>

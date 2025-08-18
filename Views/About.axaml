@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Nous.Views.AboutWindow"
+        Width="400" Height="350"
+        CanResize="True"
+        WindowStartupLocation="CenterOwner"
+        Background="#0A0F0F">
+
+	<ScrollViewer Margin="10" VerticalScrollBarVisibility="Auto">
+		<StackPanel>
+			<TextBlock Text="Omkar Swami, Rushbh Mistry, Dhananjay Tailor and Prashant Chauhan developed this application."
+                       Foreground="#6FD1C8"
+                       HorizontalAlignment="Center"
+                       FontSize="16"
+                       Margin="0,0,0,10"/>
+
+			<TextBlock Foreground="#D1E8E2"
+                       FontSize="14"
+                       TextWrapping="Wrap">
+				<Run Text="Steps to use Nous:"/>
+				<LineBreak/>
+				<Run Text="1. Start Nous"/>
+				<LineBreak/>
+				<Run Text="2. Start server on Nous"/>
+				<LineBreak/>
+				<Run Text="3. Start the listener"/>
+				<LineBreak/>
+				<Run Text="4. Open Access Gate"/>
+				<LineBreak/>
+				<Run Text="5. Enter the hashcode visible on listener PC; if multiple hashcodes, click the Plus button"/>
+				<LineBreak/>
+				<Run Text="6. Enter prompt and generate the command"/>
+				<LineBreak/>
+				<Run Text="7. You can modify the generated command before sending if needed, then click Send"/>
+				<LineBreak/>
+				<Run Text="8. View the formatted output in the results panel"/>
+			</TextBlock>
+		</StackPanel>
+	</ScrollViewer>
+</Window>

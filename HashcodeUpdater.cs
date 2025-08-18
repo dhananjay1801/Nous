@@ -1,5 +1,9 @@
+using Avalonia.Logging;
 using System;
 using System.Threading;
+using Nous.Utils;
+
+using RLogger = Nous.Utils.Logger;
 
 namespace Nous
 {
@@ -22,12 +26,16 @@ namespace Nous
             {
                 try
                 {
-                    Console.WriteLine("Updating hashcodes...");
+                    //Console.WriteLine("Updating hashcodes...");
+                    RLogger.SWrite("UPDATING HASHCDODES");
+                   
                     _manager.UpdateHashcodes();
-                    Console.WriteLine($"Update complete. Waiting for {_intervalSeconds / 60} minutes.");
+                    //Console.WriteLine($"Update complete. Waiting for {_intervalSeconds / 60} minutes.");
+                    RLogger.SWrite("Update complete. Waiting for next");
                 }
                 catch (Exception e)
                 {
+                    RLogger.EWrite($"Error during updating: {e.Message}");
                     Console.WriteLine($"Error during update: {e.Message}");
                 }
                 Thread.Sleep(_intervalSeconds * 1000);
