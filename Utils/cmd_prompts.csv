@@ -1,0 +1,109 @@
+Prompt,ExpectedCommand
+Show current working directory,cd
+List all files and folders in the current directory,dir
+Clear the terminal screen,cls
+Display the current date,date /t
+Display the current system time,time /t
+Display system information summary,systeminfo
+Check the hostname of this computer,hostname
+Display current logged in user,whoami
+Show the MAC address of the network adapter,getmac
+Display active TCP/UDP connections,netstat -an
+Show IP configuration details,ipconfig /all
+Ping google.com to check network connectivity,ping google.com
+Trace route to example.com,tracert example.com
+Check current time zone settings,tzutil /g
+Display Windows version,ver
+Display volume label of current drive,vol
+List all environment variables,set
+Check disk usage of C drive,chkdsk C:
+Show Group Policy Resultant Set of Policy,gpresult /r
+Update Group Policy,gpupdate /force
+Show processes running on system,tasklist
+Check performance monitor counters,typeperf -qx
+Display all services and their status,sc query
+List cached Kerberos tickets,klist
+Check event logs configuration,wevtutil el
+Display result of nslookup on example.com,nslookup example.com
+List installed device drivers,driverquery
+Check free disk space on C drive,fsutil volume diskfree C:
+Display folder structure of current directory,tree
+Show user sessions,quser
+Show active sessions,qwinsta
+Query running processes with QPROCESS,qprocess
+List scheduled tasks,schtasks /query
+Check Windows time service configuration,w32tm /query /status
+Open Windows Explorer to C drive,explorer C:\
+List contents of C:\Windows,dir C:\Windows
+Check CPU architecture info,wmic cpu get caption
+Get BIOS details,"wmic bios get manufacturer,version"
+List logical disks,"wmic logicaldisk get name,description"
+Check operating system details,"wmic os get caption,version"
+Check startup programs,"wmic startup get caption,command"
+Show all printers,wmic printer list brief
+Display network adapter config,"wmic nicconfig get description,ipaddress"
+Check uptime,net statistics workstation
+List network shares,net share
+List local users,net user
+List groups,net localgroup
+Display active SMB sessions,net session
+List open files,openfiles
+Display Windows license info,slmgr /dli
+Check cached DNS entries,ipconfig /displaydns
+Flush DNS cache,ipconfig /flushdns
+Display routing table,route print
+Display ARP table,arp -a
+Compare two files,fc file1.txt file2.txt
+Search for 'error' in logfile.txt,findstr error logfile.txt
+Show command history,doskey /history
+Show current PATH variable,echo %PATH%
+Show processes with PsList,pslist
+Show logged on users with PsLoggedOn,psloggedon
+Check system information with PsInfo,psinfo
+Show system uptime with PsInfo,psinfo -s
+Display WMIC service list,wmic service list brief
+List disk drives,"wmic diskdrive get caption,size"
+Check battery status,wmic path Win32_Battery get EstimatedChargeRemaining
+Show network protocols,netsh int show interface
+List firewall rules,netsh advfirewall firewall show rule name=all
+Check current power configuration,powercfg /query
+List available power plans,powercfg /list
+Check last boot time,"systeminfo | find ""System Boot Time"""
+Display running tasks with details,tasklist /v
+Check memory usage,"systeminfo | findstr /C:""Total Physical Memory"""
+Check virtual memory info,"systeminfo | findstr /C:""Virtual Memory"""
+Display command prompt title change,title NousTest
+Check WMIC process list,wmic process list brief
+Display network adapters,"wmic nic get name,macaddress"
+Check domain controller info,nltest /dclist:yourdomain
+Test network location trust,nltest /sc_query:yourdomain
+Show DNS client settings,dnscmd /info
+Check IP routes,netsh int ipv4 show route
+Show performance counters list,typeperf -q
+Check system restore status,reagentc /info
+Show installed hotfixes,wmic qfe list
+Show available disk space with FSUTIL,fsutil volume diskfree C:
+List certificates in store,certutil -store my
+Check kernel drivers,fltmc
+Show event logs,wevtutil el
+Display Windows packages,dism /online /get-packages
+Show feature list,dism /online /get-features
+Check integrity of system files,sfc /verifyonly
+Run help for command prompt,help
+Show HELP for DIR command,help dir
+Check WMIC computer system info,"wmic computersystem get model,name,manufacturer"
+Display local groups,net localgroup
+List SMB shares,net share
+Show current date,echo %date%
+Show current time,echo %time%
+Check Windows edition,"systeminfo | findstr /B /C:""OS Name"""
+Check system uptime with WMIC,wmic os get lastbootuptime
+Show hardware inventory,msinfo32
+List policies applied,gpresult /h report.html
+Check Kerberos tickets,klist tickets
+Display disk quotas,dirquota quota list
+Show local security policies,auditpol /get /category:*
+Check installed apps with WMIC,"wmic product get name,version"
+List mapped drives,net use
+Display drive letters,wmic logicaldisk get name
+Show computer SID,whoami /user

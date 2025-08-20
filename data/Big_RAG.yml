@@ -1,0 +1,460 @@
+- request: Show current working directory
+  command: cd
+  description: 'Executes "cd", which is the correct command for: Show current working
+    directory.'
+- request: List all files and folders in the current directory
+  command: dir
+  description: 'Executes "dir", which is the correct command for: List all files and
+    folders in the current directory.'
+- request: Clear the terminal screen
+  command: cls
+  description: 'Executes "cls", which is the correct command for: Clear the terminal
+    screen.'
+- request: Display the current date
+  command: date /t
+  description: 'Executes "date /t", which is the correct command for: Display the
+    current date.'
+- request: Display the current system time
+  command: time /t
+  description: 'Executes "time /t", which is the correct command for: Display the
+    current system time.'
+- request: Display system information summary
+  command: systeminfo
+  description: 'Executes "systeminfo", which is the correct command for: Display system
+    information summary.'
+- request: Check the hostname of this computer
+  command: hostname
+  description: 'Executes "hostname", which is the correct command for: Check the hostname
+    of this computer.'
+- request: Display current logged in user
+  command: whoami
+  description: For the request "Display current logged in user", the expected correct
+    command is "whoami". The model initially generated "echo %username%".
+- request: Show the MAC address of the network adapter
+  command: getmac
+  description: 'Executes "getmac", which is the correct command for: Show the MAC
+    address of the network adapter.'
+- request: Display active TCP/UDP connections
+  command: netstat -an
+  description: For the request "Display active TCP/UDP connections", the expected
+    correct command is "netstat -an". The model initially generated "netstat -a".
+- request: Show IP configuration details
+  command: ipconfig /all
+  description: For the request "Show IP configuration details", the expected correct
+    command is "ipconfig /all". The model initially generated "ipconfig".
+- request: Ping google.com to check network connectivity
+  command: ping google.com
+  description: 'Executes "ping google.com", which is the correct command for: Ping
+    google.com to check network connectivity.'
+- request: Trace route to example.com
+  command: tracert example.com
+  description: 'Executes "tracert example.com", which is the correct command for:
+    Trace route to example.com.'
+- request: Check current time zone settings
+  command: tzutil /g
+  description: 'Executes "tzutil /g", which is the correct command for: Check current
+    time zone settings.'
+- request: Display Windows version
+  command: ver
+  description: 'Executes "ver", which is the correct command for: Display Windows
+    version.'
+- request: Display volume label of current drive
+  command: vol
+  description: 'Executes "vol", which is the correct command for: Display volume label
+    of current drive.'
+- request: List all environment variables
+  command: set
+  description: 'Executes "set", which is the correct command for: List all environment
+    variables.'
+- request: Check disk usage of C drive
+  command: 'chkdsk C:'
+  description: For the request "Check disk usage of C drive", the expected correct
+    command is "chkdsk C:". The model initially generated "fsutil volume diskfree
+    c:".
+- request: Show Group Policy Resultant Set of Policy
+  command: gpresult /r
+  description: 'Executes "gpresult /r", which is the correct command for: Show Group
+    Policy Resultant Set of Policy.'
+- request: Update Group Policy
+  command: gpupdate /force
+  description: 'Executes "gpupdate /force", which is the correct command for: Update
+    Group Policy.'
+- request: Show processes running on system
+  command: tasklist
+  description: For the request "Show processes running on system", the expected correct
+    command is "tasklist". The model initially generated "tasklist /fi "USERNAME eq
+    SYSTEM".
+- request: Check performance monitor counters
+  command: typeperf -qx
+  description: For the request "Check performance monitor counters", the expected
+    correct command is "typeperf -qx". The model initially generated "typeperf".
+- request: Display all services and their status
+  command: sc query
+  description: For the request "Display all services and their status", the expected
+    correct command is "sc query". The model initially generated "sc queryex type=
+    service state= all".
+- request: List cached Kerberos tickets
+  command: klist
+  description: 'Executes "klist", which is the correct command for: List cached Kerberos
+    tickets.'
+- request: Check event logs configuration
+  command: wevtutil el
+  description: For the request "Check event logs configuration", the expected correct
+    command is "wevtutil el". The model initially generated "wevtutil gl".
+- request: Display result of nslookup on example.com
+  command: nslookup example.com
+  description: 'Executes "nslookup example.com", which is the correct command for:
+    Display result of nslookup on example.com.'
+- request: List installed device drivers
+  command: driverquery
+  description: 'Executes "driverquery", which is the correct command for: List installed
+    device drivers.'
+- request: Check free disk space on C drive
+  command: 'fsutil volume diskfree C:'
+  description: For the request "Check free disk space on C drive", the expected correct
+    command is "fsutil volume diskfree C:". The model initially generated "fsutil
+    volume diskfree c:".
+- request: Display folder structure of current directory
+  command: tree
+  description: 'Executes "tree", which is the correct command for: Display folder
+    structure of current directory.'
+- request: Show user sessions
+  command: quser
+  description: For the request "Show user sessions", the expected correct command
+    is "quser". The model initially generated "query user".
+- request: Show active sessions
+  command: qwinsta
+  description: For the request "Show active sessions", the expected correct command
+    is "qwinsta". The model initially generated "query session".
+- request: Query running processes with QPROCESS
+  command: qprocess
+  description: For the request "Query running processes with QPROCESS", the expected
+    correct command is "qprocess". The model initially generated "[ERROR in backend]
+    Command '['python', 'E:\\College Project\\Min_Nous\\Nous\\backend.py', 'Query
+    running processes with QPROCESS']' timed out after 30 seconds".
+- request: List scheduled tasks
+  command: schtasks /query
+  description: For the request "List scheduled tasks", the expected correct command
+    is "schtasks /query". The model initially generated "schtasks".
+- request: Check Windows time service configuration
+  command: w32tm /query /status
+  description: For the request "Check Windows time service configuration", the expected
+    correct command is "w32tm /query /status". The model initially generated "sc qc
+    w32time".
+- request: Open Windows Explorer to C drive
+  command: explorer C:\
+  description: 'Executes "explorer C:\", which is the correct command for: Open Windows
+    Explorer to C drive.'
+- request: List contents of C:\Windows
+  command: dir C:\Windows
+  description: 'Executes "dir C:\Windows", which is the correct command for: List
+    contents of C:\Windows.'
+- request: Check CPU architecture info
+  command: wmic cpu get caption
+  description: For the request "Check CPU architecture info", the expected correct
+    command is "wmic cpu get caption". The model initially generated "wmic cpu get
+    Architecture".
+- request: Get BIOS details
+  command: wmic bios get manufacturer,version
+  description: For the request "Get BIOS details", the expected correct command is
+    "wmic bios get manufacturer,version". The model initially generated "wmic bios
+    get SerialNumber, SMBIOSBIOSVersion, Manufacturer, ReleaseDate".
+- request: List logical disks
+  command: wmic logicaldisk get name,description
+  description: For the request "List logical disks", the expected correct command
+    is "wmic logicaldisk get name,description". The model initially generated "wmic
+    logicaldisk get name".
+- request: Check operating system details
+  command: wmic os get caption,version
+  description: For the request "Check operating system details", the expected correct
+    command is "wmic os get caption,version". The model initially generated "systeminfo".
+- request: Check startup programs
+  command: wmic startup get caption,command
+  description: For the request "Check startup programs", the expected correct command
+    is "wmic startup get caption,command". The model initially generated "tasklist".
+- request: Show all printers
+  command: wmic printer list brief
+  description: 'Executes "wmic printer list brief", which is the correct command for:
+    Show all printers.'
+- request: Display network adapter config
+  command: wmic nicconfig get description,ipaddress
+  description: For the request "Display network adapter config", the expected correct
+    command is "wmic nicconfig get description,ipaddress". The model initially generated
+    "ipconfig".
+- request: Check uptime
+  command: net statistics workstation
+  description: For the request "Check uptime", the expected correct command is "net
+    statistics workstation". The model initially generated "systeminfo | find "System
+    Boot Time".
+- request: List network shares
+  command: net share
+  description: 'Executes "net share", which is the correct command for: List network
+    shares.'
+- request: List local users
+  command: net user
+  description: 'Executes "net user", which is the correct command for: List local
+    users.'
+- request: List groups
+  command: net localgroup
+  description: 'Executes "net localgroup", which is the correct command for: List
+    groups.'
+- request: Display active SMB sessions
+  command: net session
+  description: 'Executes "net session", which is the correct command for: Display
+    active SMB sessions.'
+- request: List open files
+  command: openfiles
+  description: For the request "List open files", the expected correct command is
+    "openfiles". The model initially generated "net file".
+- request: Display Windows license info
+  command: slmgr /dli
+  description: 'Executes "slmgr /dli", which is the correct command for: Display Windows
+    license info.'
+- request: Check cached DNS entries
+  command: ipconfig /displaydns
+  description: 'Executes "ipconfig /displaydns", which is the correct command for:
+    Check cached DNS entries.'
+- request: Flush DNS cache
+  command: ipconfig /flushdns
+  description: 'Executes "ipconfig /flushdns", which is the correct command for: Flush
+    DNS cache.'
+- request: Display routing table
+  command: route print
+  description: 'Executes "route print", which is the correct command for: Display
+    routing table.'
+- request: Display ARP table
+  command: arp -a
+  description: For the request "Display ARP table", the expected correct command is
+    "arp -a". The model initially generated "[ERROR in backend] Command '['python',
+    'E:\\College Project\\Min_Nous\\Nous\\backend.py', 'Display ARP table']' timed
+    out after 30 seconds".
+- request: Compare two files
+  command: fc file1.txt file2.txt
+  description: For the request "Compare two files", the expected correct command is
+    "fc file1.txt file2.txt". The model initially generated "fc".
+- request: Search for 'error' in logfile.txt
+  command: findstr error logfile.txt
+  description: For the request "Search for 'error' in logfile.txt", the expected correct
+    command is "findstr error logfile.txt". The model initially generated "findstr
+    "error" logfile.txt".
+- request: Show command history
+  command: doskey /history
+  description: 'Executes "doskey /history", which is the correct command for: Show
+    command history.'
+- request: Show current PATH variable
+  command: echo %PATH%
+  description: 'Executes "echo %PATH%", which is the correct command for: Show current
+    PATH variable.'
+- request: Show processes with PsList
+  command: pslist
+  description: For the request "Show processes with PsList", the expected correct
+    command is "pslist". The model initially generated "PsList".
+- request: Show logged on users with PsLoggedOn
+  command: psloggedon
+  description: For the request "Show logged on users with PsLoggedOn", the expected
+    correct command is "psloggedon". The model initially generated "PsLoggedOn".
+- request: Check system information with PsInfo
+  command: psinfo
+  description: For the request "Check system information with PsInfo", the expected
+    correct command is "psinfo". The model initially generated "PsInfo".
+- request: Show system uptime with PsInfo
+  command: psinfo -s
+  description: For the request "Show system uptime with PsInfo", the expected correct
+    command is "psinfo -s". The model initially generated "PsInfo".
+- request: Display WMIC service list
+  command: wmic service list brief
+  description: For the request "Display WMIC service list", the expected correct command
+    is "wmic service list brief". The model initially generated "wmic service list".
+- request: List disk drives
+  command: wmic diskdrive get caption,size
+  description: For the request "List disk drives", the expected correct command is
+    "wmic diskdrive get caption,size". The model initially generated "echo list disk
+    | diskpart".
+- request: Check battery status
+  command: wmic path Win32_Battery get EstimatedChargeRemaining
+  description: For the request "Check battery status", the expected correct command
+    is "wmic path Win32_Battery get EstimatedChargeRemaining". The model initially
+    generated "powercfg /batteryreport".
+- request: Show network protocols
+  command: netsh int show interface
+  description: For the request "Show network protocols", the expected correct command
+    is "netsh int show interface". The model initially generated "netstat -s".
+- request: List firewall rules
+  command: netsh advfirewall firewall show rule name=all
+  description: 'Executes "netsh advfirewall firewall show rule name=all", which is
+    the correct command for: List firewall rules.'
+- request: Check current power configuration
+  command: powercfg /query
+  description: For the request "Check current power configuration", the expected correct
+    command is "powercfg /query". The model initially generated "powercfg /list".
+- request: List available power plans
+  command: powercfg /list
+  description: For the request "List available power plans", the expected correct
+    command is "powercfg /list". The model initially generated "powercfg /l".
+- request: Check last boot time
+  command: systeminfo | find "System Boot Time"
+  description: 'Executes "systeminfo | find "System Boot Time", which is the correct
+    command for: Check last boot time.'
+- request: Display running tasks with details
+  command: tasklist /v
+  description: 'Executes "tasklist /v", which is the correct command for: Display
+    running tasks with details.'
+- request: Check memory usage
+  command: systeminfo | findstr /C:"Total Physical Memory
+  description: For the request "Check memory usage", the expected correct command
+    is "systeminfo | findstr /C:"Total Physical Memory". The model initially generated
+    "tasklist".
+- request: Check virtual memory info
+  command: systeminfo | findstr /C:"Virtual Memory
+  description: For the request "Check virtual memory info", the expected correct command
+    is "systeminfo | findstr /C:"Virtual Memory". The model initially generated "wmic
+    computersystem get TotalVirtualMemory, FreeVirtualMemory".
+- request: Display command prompt title change
+  command: title NousTest
+  description: For the request "Display command prompt title change", the expected
+    correct command is "title NousTest". The model initially generated "title New
+    Title".
+- request: Check WMIC process list
+  command: wmic process list brief
+  description: 'Executes "wmic process list brief", which is the correct command for:
+    Check WMIC process list.'
+- request: Display network adapters
+  command: wmic nic get name,macaddress
+  description: For the request "Display network adapters", the expected correct command
+    is "wmic nic get name,macaddress". The model initially generated "netsh interface
+    show interface".
+- request: Check domain controller info
+  command: nltest /dclist:yourdomain
+  description: For the request "Check domain controller info", the expected correct
+    command is "nltest /dclist:yourdomain". The model initially generated "nltest
+    /domain_trusts".
+- request: Test network location trust
+  command: nltest /sc_query:yourdomain
+  description: For the request "Test network location trust", the expected correct
+    command is "nltest /sc_query:yourdomain". The model initially generated "Test-NetConnection".
+- request: Show DNS client settings
+  command: dnscmd /info
+  description: For the request "Show DNS client settings", the expected correct command
+    is "dnscmd /info". The model initially generated "ipconfig /displaydns".
+- request: Check IP routes
+  command: netsh int ipv4 show route
+  description: For the request "Check IP routes", the expected correct command is
+    "netsh int ipv4 show route". The model initially generated "-a".
+- request: Show performance counters list
+  command: typeperf -q
+  description: For the request "Show performance counters list", the expected correct
+    command is "typeperf -q". The model initially generated "typeperf /q".
+- request: Check system restore status
+  command: reagentc /info
+  description: For the request "Check system restore status", the expected correct
+    command is "reagentc /info". The model initially generated "wmic /Namespace:\\root\default
+    Path SystemRestore Call Disable "%computername%".
+- request: Show installed hotfixes
+  command: wmic qfe list
+  description: For the request "Show installed hotfixes", the expected correct command
+    is "wmic qfe list". The model initially generated "qfe".
+- request: Show available disk space with FSUTIL
+  command: 'fsutil volume diskfree C:'
+  description: For the request "Show available disk space with FSUTIL", the expected
+    correct command is "fsutil volume diskfree C:". The model initially generated
+    "fsutil volume diskfree c:".
+- request: List certificates in store
+  command: certutil -store my
+  description: For the request "List certificates in store", the expected correct
+    command is "certutil -store my". The model initially generated "certutil -store".
+- request: Check kernel drivers
+  command: fltmc
+  description: For the request "Check kernel drivers", the expected correct command
+    is "fltmc". The model initially generated "driverquery /v /fo csv | findstr /i
+    "kernel".
+- request: Show event logs
+  command: wevtutil el
+  description: 'Executes "wevtutil el", which is the correct command for: Show event
+    logs.'
+- request: Display Windows packages
+  command: dism /online /get-packages
+  description: For the request "Display Windows packages", the expected correct command
+    is "dism /online /get-packages". The model initially generated "powershell "Get-WindowsPackage
+    -Online".
+- request: Show feature list
+  command: dism /online /get-features
+  description: For the request "Show feature list", the expected correct command is
+    "dism /online /get-features". The model initially generated "version".
+- request: Check integrity of system files
+  command: sfc /verifyonly
+  description: For the request "Check integrity of system files", the expected correct
+    command is "sfc /verifyonly". The model initially generated "sfc /scannow".
+- request: Run help for command prompt
+  command: help
+  description: 'Executes "help", which is the correct command for: Run help for command
+    prompt.'
+- request: Show HELP for DIR command
+  command: help dir
+  description: For the request "Show HELP for DIR command", the expected correct command
+    is "help dir". The model initially generated "dir /?".
+- request: Check WMIC computer system info
+  command: wmic computersystem get model,name,manufacturer
+  description: For the request "Check WMIC computer system info", the expected correct
+    command is "wmic computersystem get model,name,manufacturer". The model initially
+    generated "```text".
+- request: Display local groups
+  command: net localgroup
+  description: 'Executes "net localgroup", which is the correct command for: Display
+    local groups.'
+- request: List SMB shares
+  command: net share
+  description: 'Executes "net share", which is the correct command for: List SMB shares.'
+- request: Show current date
+  command: echo %date%
+  description: For the request "Show current date", the expected correct command is
+    "echo %date%". The model initially generated "date /t".
+- request: Show current time
+  command: echo %time%
+  description: For the request "Show current time", the expected correct command is
+    "echo %time%". The model initially generated "time /t".
+- request: Check Windows edition
+  command: systeminfo | findstr /B /C:"OS Name
+  description: For the request "Check Windows edition", the expected correct command
+    is "systeminfo | findstr /B /C:"OS Name". The model initially generated "wmic
+    os get Caption".
+- request: Check system uptime with WMIC
+  command: wmic os get lastbootuptime
+  description: 'Executes "wmic os get lastbootuptime", which is the correct command
+    for: Check system uptime with WMIC.'
+- request: Show hardware inventory
+  command: msinfo32
+  description: 'Executes "msinfo32", which is the correct command for: Show hardware
+    inventory.'
+- request: List policies applied
+  command: gpresult /h report.html
+  description: For the request "List policies applied", the expected correct command
+    is "gpresult /h report.html". The model initially generated "gpresult /r".
+- request: Check Kerberos tickets
+  command: klist tickets
+  description: For the request "Check Kerberos tickets", the expected correct command
+    is "klist tickets". The model initially generated "klist".
+- request: Display disk quotas
+  command: dirquota quota list
+  description: For the request "Display disk quotas", the expected correct command
+    is "dirquota quota list". The model initially generated "fsutil quota query C:".
+- request: Show local security policies
+  command: auditpol /get /category:*
+  description: For the request "Show local security policies", the expected correct
+    command is "auditpol /get /category:*". The model initially generated "secedit
+    /export /cfg C:\securitypolicy.inf".
+- request: Check installed apps with WMIC
+  command: wmic product get name,version
+  description: 'Executes "wmic product get name,version", which is the correct command
+    for: Check installed apps with WMIC.'
+- request: List mapped drives
+  command: net use
+  description: 'Executes "net use", which is the correct command for: List mapped
+    drives.'
+- request: Display drive letters
+  command: wmic logicaldisk get name
+  description: 'Executes "wmic logicaldisk get name", which is the correct command
+    for: Display drive letters.'
+- request: Show computer SID
+  command: whoami /user
+  description: For the request "Show computer SID", the expected correct command is
+    "whoami /user". The model initially generated "wmic os get SerialNumber".

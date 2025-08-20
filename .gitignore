@@ -25,3 +25,11 @@ obj/
 
 # Ignore logs
 Log.txt
+
+#Ignore vectorDB
+vector_db/
+*.faiss
+*.pkl
+
+#Ignore SQL DB
+*.sql

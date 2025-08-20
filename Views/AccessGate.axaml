@@ -1,0 +1,146 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Nous.Views.AccessGate"
+        Title="Access Gate"
+        Width="800" Height="600"
+        Background="#0A0F0F"
+        CanResize="True"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI">
+
+	<Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" Margin="20">
+
+		<!-- Title -->
+		<TextBlock Text="ACCESS GATE"
+                   FontSize="28"
+                   Foreground="#6FD1C8"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"
+                   Grid.Row="0"/>
+
+		<!-- Hash Input Section -->
+		<Grid Grid.Row="1" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,20">
+			<TextBox x:Name="HashInput"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Watermark="Enter hash code"
+                     Background="Transparent"
+                     Foreground="#6FD1C8"
+                     BorderBrush="#1B3B3A"
+                     BorderThickness="1"
+                     FontSize="16"
+                     Padding="10,5"/>
+			<Button Grid.Row="0" Grid.Column="1"
+                    Content="+"
+                    Click="AddHash_Click"
+                    Background="Transparent"
+                    BorderBrush="#1B3B3A"
+                    BorderThickness="1"
+                    Foreground="#6FD1C8"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Margin="5,0,0,0"/>
+			<Button Grid.Row="0" Grid.Column="2"
+                    Content="-"
+                    Click="RemoveHash_Click"
+                    Background="Transparent"
+                    BorderBrush="#1B3B3A"
+                    BorderThickness="1"
+                    Foreground="#6FD1C8"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Margin="5,0,0,0"/>
+
+			<!-- Restored hash list -->
+			<StackPanel x:Name="HashListPanel"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Spacing="5"
+                        Margin="0,10,0,0"/>
+		</Grid>
+
+		<!-- Prompt -->
+		<StackPanel Grid.Row="2" Orientation="Vertical" Spacing="10">
+			<TextBox x:Name="PromptInput"
+                     Watermark="Enter prompt"
+                     Background="Transparent"
+                     Foreground="#6FD1C8"
+                     BorderBrush="#1B3B3A"
+                     BorderThickness="1"
+                     FontSize="16"
+                     Padding="10,5"/>
+		</StackPanel>
+
+		<!-- Generate Button -->
+		<StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,10,0,20">
+			<Button Content="GENERATE"
+                    Background="Transparent"
+                    BorderBrush="#1B3B3A"
+                    BorderThickness="1"
+                    Foreground="#6FD1C8"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Padding="10,5"
+                    Click="Generate_Click"/>
+			<Button Content="CLEAR"
+                    Background="Transparent"
+                    BorderBrush="#1B3B3A"
+                    BorderThickness="1"
+                    Foreground="#6FD1C8"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Padding="10,5"
+                    Click="Clear_Click"/>
+		</StackPanel>
+
+		<!-- Command Preview and Send Button -->
+		<StackPanel Grid.Row="4" Orientation="Vertical" Spacing="10">
+			<TextBox x:Name="CommandBox"
+                     Watermark="Generated command will appear here"
+                     Background="Transparent"
+                     Foreground="#6FD1C8"
+                     BorderBrush="#1B3B3A"
+                     BorderThickness="1"
+                     FontSize="16"
+                     Padding="10,5"/>
+			<Button Content="SEND"
+                    Background="Transparent"
+                    BorderBrush="#1B3B3A"
+                    BorderThickness="1"
+                    Foreground="#6FD1C8"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Padding="10,5"
+                    Click="Send_Click"/>
+		</StackPanel>
+
+		<!-- Results -->
+		<StackPanel Grid.Row="5">
+			<TextBlock Text="RESULTS"
+                       Foreground="#6FD1C8"
+                       FontWeight="Bold"
+                       Margin="0,0,0,5"/>
+			<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+				<ListBox x:Name="ResultsList"
+                         Background="Transparent"
+                         BorderBrush="#1B3B3A"
+                         BorderThickness="1"
+                         Foreground="#6FD1C8"
+                         FontFamily="Consolas"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                         >
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding .}"
+                                       TextWrapping="Wrap"
+                                       Foreground="#6FD1C8"
+                                       FontFamily="Consolas"/>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</ScrollViewer>
+		</StackPanel>
+	</Grid>
+</Window>

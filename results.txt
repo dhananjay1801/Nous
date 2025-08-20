@@ -1,0 +1,648 @@
+=== Test 1 ===
+Prompt: Show current working directory
+Expected: cd
+Generated: cd
+Sanitized: cd
+
+=== Test 2 ===
+Prompt: List all files and folders in the current directory
+Expected: dir
+Generated: dir
+Sanitized: dir
+
+=== Test 3 ===
+Prompt: Clear the terminal screen
+Expected: cls
+Generated: cls
+Sanitized: cls
+
+=== Test 4 ===
+Prompt: Display the current date
+Expected: date /t
+Generated: date /t
+Sanitized: date /t
+
+=== Test 5 ===
+Prompt: Display the current system time
+Expected: time /t
+Generated: time /t
+Sanitized: time /t
+
+=== Test 6 ===
+Prompt: Display system information summary
+Expected: systeminfo
+Generated: systeminfo
+Sanitized: systeminfo
+
+=== Test 7 ===
+Prompt: Check the hostname of this computer
+Expected: hostname
+Generated: hostname
+Sanitized: hostname
+
+=== Test 8 ===
+Prompt: Display current logged in user
+Expected: whoami
+Generated: echo %USERNAME%
+Sanitized: echo %USERNAME%
+
+=== Test 9 ===
+Prompt: Show the MAC address of the network adapter
+Expected: getmac
+Generated: getmac
+Sanitized: getmac
+
+=== Test 10 ===
+Prompt: Display active TCP/UDP connections
+Expected: netstat -an
+Generated: netstat -ano
+Sanitized: netstat -ano
+
+=== Test 11 ===
+Prompt: Show IP configuration details
+Expected: ipconfig /all
+Generated: ipconfig /all
+Sanitized: ipconfig /all
+
+=== Test 12 ===
+Prompt: Ping google.com to check network connectivity
+Expected: ping google.com
+Generated: ping google.com
+Sanitized: ping google.com
+
+=== Test 13 ===
+Prompt: Trace route to example.com
+Expected: tracert example.com
+Generated: tracert example.com
+Sanitized: tracert example.com
+
+=== Test 14 ===
+Prompt: Check current time zone settings
+Expected: tzutil /g
+Generated: tzutil /g
+Sanitized: tzutil /g
+
+=== Test 15 ===
+Prompt: Display Windows version
+Expected: ver
+Generated: ver
+Sanitized: ver
+
+=== Test 16 ===
+Prompt: Display volume label of current drive
+Expected: vol
+Generated: vol
+Sanitized: vol
+
+=== Test 17 ===
+Prompt: List all environment variables
+Expected: set
+Generated: set
+Sanitized: set
+
+=== Test 18 ===
+Prompt: Check disk usage of C drive
+Expected: chkdsk C:
+Generated: dir C:
+Sanitized: dir C:
+
+=== Test 19 ===
+Prompt: Show Group Policy Resultant Set of Policy
+Expected: gpresult /r
+Generated: gpresult /r
+Sanitized: gpresult /r
+
+=== Test 20 ===
+Prompt: Update Group Policy
+Expected: gpupdate /force
+Generated: gpupdate /force
+Sanitized: gpupdate /force
+
+=== Test 21 ===
+Prompt: Show processes running on system
+Expected: tasklist
+Generated: tasklist
+Sanitized: tasklist
+
+=== Test 22 ===
+Prompt: Check performance monitor counters
+Expected: typeperf -qx
+Generated: typeperf "\Processor(_Total)\% Processor Time" "\Memory\Available MBytes" -sc 1
+Sanitized: typeperf "\Processor(_Total)\% Processor Time" "\Memory\Available MBytes" -sc 1
+
+=== Test 23 ===
+Prompt: Display all services and their status
+Expected: sc query
+Generated: sc query state= all
+Sanitized: sc query state= all
+
+=== Test 24 ===
+Prompt: List cached Kerberos tickets
+Expected: klist
+Generated: klist
+Sanitized: klist
+
+=== Test 25 ===
+Prompt: Check event logs configuration
+Expected: wevtutil el
+Generated: wevtutil gl
+Sanitized: wevtutil gl
+
+=== Test 26 ===
+Prompt: Display result of nslookup on example.com
+Expected: nslookup example.com
+Generated: nslookup example.com
+Sanitized: nslookup example.com
+
+=== Test 27 ===
+Prompt: List installed device drivers
+Expected: driverquery
+Generated: driverquery
+Sanitized: driverquery
+
+=== Test 28 ===
+Prompt: Check free disk space on C drive
+Expected: fsutil volume diskfree C:
+Generated: wmic logicaldisk where drivetype=3 get Caption,FreeSpace,Size
+Sanitized: wmic logicaldisk where drivetype=3 get Caption,FreeSpace,Size
+
+=== Test 29 ===
+Prompt: Display folder structure of current directory
+Expected: tree
+Generated: tree /f
+Sanitized: tree /f
+
+=== Test 30 ===
+Prompt: Show user sessions
+Expected: quser
+Generated: query user
+Sanitized: query user
+
+=== Test 31 ===
+Prompt: Show active sessions
+Expected: qwinsta
+Generated: query session
+Sanitized: query session
+
+=== Test 32 ===
+Prompt: Query running processes with QPROCESS
+Expected: qprocess
+Generated: qprocess
+Sanitized: qprocess
+
+=== Test 33 ===
+Prompt: List scheduled tasks
+Expected: schtasks /query
+Generated: schtasks
+Sanitized: schtasks
+
+=== Test 34 ===
+Prompt: Check Windows time service configuration
+Expected: w32tm /query /status
+Generated: sc qc w32time
+Sanitized: sc qc w32time
+
+=== Test 35 ===
+Prompt: Open Windows Explorer to C drive
+Expected: explorer C:\
+Generated: explorer C:\
+Sanitized: explorer C:\
+
+=== Test 36 ===
+Prompt: List contents of C:\Windows
+Expected: dir C:\Windows
+Generated: dir C:\Windows
+Sanitized: dir C:\Windows
+
+=== Test 37 ===
+Prompt: Check CPU architecture info
+Expected: wmic cpu get caption
+Generated: wmic cpu get Architecture
+Sanitized: wmic cpu get Architecture
+
+=== Test 38 ===
+Prompt: Get BIOS details
+Expected: wmic bios get manufacturer,version
+Generated: wmic bios get smbiosbiosversion, manufacturer, model, serialnumber
+Sanitized: wmic bios get smbiosbiosversion, manufacturer, model, serialnumber
+
+=== Test 39 ===
+Prompt: List logical disks
+Expected: wmic logicaldisk get name,description
+Generated: wmic logicaldisk get Caption, VolumeName, Size, FreeSpace
+Sanitized: wmic logicaldisk get Caption, VolumeName, Size, FreeSpace
+
+=== Test 40 ===
+Prompt: Check operating system details
+Expected: wmic os get caption,version
+Generated: systeminfo
+Sanitized: systeminfo
+
+=== Test 41 ===
+Prompt: Check startup programs
+Expected: wmic startup get caption,command
+Generated: wmic startup list full
+Sanitized: wmic startup list full
+
+=== Test 42 ===
+Prompt: Show all printers
+Expected: wmic printer list brief
+Generated: powershell Get-Printer
+Sanitized: powershell Get-Printer
+
+=== Test 43 ===
+Prompt: Display network adapter config
+Expected: wmic nicconfig get description,ipaddress
+Generated: ipconfig /all
+Sanitized: ipconfig /all
+
+=== Test 44 ===
+Prompt: Check uptime
+Expected: net statistics workstation
+Generated: systeminfo | findstr "System Boot Time"
+Sanitized: systeminfo | findstr "System Boot Time"
+
+=== Test 45 ===
+Prompt: List network shares
+Expected: net share
+Generated: net share
+Sanitized: net share
+
+=== Test 46 ===
+Prompt: List local users
+Expected: net user
+Generated: net user
+Sanitized: echo [-] MALICIOUS COMMAND DETECTED. NOT RUNNING THE COMMAND
+
+=== Test 47 ===
+Prompt: List groups
+Expected: net localgroup
+Generated: net localgroup
+Sanitized: net localgroup
+
+=== Test 48 ===
+Prompt: Display active SMB sessions
+Expected: net session
+Generated: net session
+Sanitized: net session
+
+=== Test 49 ===
+Prompt: List open files
+Expected: openfiles
+Generated: handle.exe
+Sanitized: handle.exe
+
+=== Test 50 ===
+Prompt: Display Windows license info
+Expected: slmgr /dli
+Generated: slmgr /dli
+Sanitized: slmgr /dli
+
+=== Test 51 ===
+Prompt: Check cached DNS entries
+Expected: ipconfig /displaydns
+Generated: ipconfig /displaydns
+Sanitized: ipconfig /displaydns
+
+=== Test 52 ===
+Prompt: Flush DNS cache
+Expected: ipconfig /flushdns
+Generated: ipconfig /flushdns
+Sanitized: ipconfig /flushdns
+
+=== Test 53 ===
+Prompt: Display routing table
+Expected: route print
+Generated: route print
+Sanitized: route print
+
+=== Test 54 ===
+Prompt: Display ARP table
+Expected: arp -a
+Generated: arp -a
+Sanitized: arp -a
+
+=== Test 55 ===
+Prompt: Compare two files
+Expected: fc file1.txt file2.txt
+Generated: FC file1.txt file2.txt
+Sanitized: FC file1.txt file2.txt
+
+=== Test 56 ===
+Prompt: Search for 'error' in logfile.txt
+Expected: findstr error logfile.txt
+Generated: findstr error logfile.txt
+Sanitized: findstr error logfile.txt
+
+=== Test 57 ===
+Prompt: Show command history
+Expected: doskey /history
+Generated: doskey /history
+Sanitized: doskey /history
+
+=== Test 58 ===
+Prompt: Show current PATH variable
+Expected: echo %PATH%
+Generated: echo %PATH%
+Sanitized: echo %PATH%
+
+=== Test 59 ===
+Prompt: Show processes with PsList
+Expected: pslist
+Generated: pslist
+Sanitized: pslist
+
+=== Test 60 ===
+Prompt: Show logged on users with PsLoggedOn
+Expected: psloggedon
+Generated: psloggedon
+Sanitized: psloggedon
+
+=== Test 61 ===
+Prompt: Check system information with PsInfo
+Expected: psinfo
+Generated: psinfo
+Sanitized: psinfo
+
+=== Test 62 ===
+Prompt: Show system uptime with PsInfo
+Expected: psinfo -s
+Generated: psinfo
+Sanitized: psinfo
+
+=== Test 63 ===
+Prompt: Display WMIC service list
+Expected: wmic service list brief
+Generated: wmic service list brief
+Sanitized: wmic service list brief
+
+=== Test 64 ===
+Prompt: List disk drives
+Expected: wmic diskdrive get caption,size
+Generated: wmic diskdrive list brief
+Sanitized: wmic diskdrive list brief
+
+=== Test 65 ===
+Prompt: Check battery status
+Expected: wmic path Win32_Battery get EstimatedChargeRemaining
+Generated: powercfg /batteryreport
+Sanitized: powercfg /batteryreport
+
+=== Test 66 ===
+Prompt: Show network protocols
+Expected: netsh int show interface
+Generated: netsh interface ipv4 show protocols
+Sanitized: netsh interface ipv4 show protocols
+
+=== Test 67 ===
+Prompt: List firewall rules
+Expected: netsh advfirewall firewall show rule name=all
+Generated: netsh advfirewall firewall show rule name=all
+Sanitized: netsh advfirewall firewall show rule name=all
+
+=== Test 68 ===
+Prompt: Check current power configuration
+Expected: powercfg /query
+Generated: powercfg /getactivescheme
+Sanitized: powercfg /getactivescheme
+
+=== Test 69 ===
+Prompt: List available power plans
+Expected: powercfg /list
+Generated: powercfg /L
+Sanitized: powercfg /L
+
+=== Test 70 ===
+Prompt: Check last boot time
+Expected: systeminfo | find "System Boot Time"
+Generated: systeminfo | find "Boot Time"
+Sanitized: systeminfo | find "Boot Time"
+
+=== Test 71 ===
+Prompt: Display running tasks with details
+Expected: tasklist /v
+Generated: tasklist /v
+Sanitized: tasklist /v
+
+=== Test 72 ===
+Prompt: Check memory usage
+Expected: systeminfo | findstr /C:"Total Physical Memory"
+Generated: wmic OS get FreePhysicalMemory,TotalVisibleMemorySize /Value
+Sanitized: wmic OS get FreePhysicalMemory,TotalVisibleMemorySize /Value
+
+=== Test 73 ===
+Prompt: Check virtual memory info
+Expected: systeminfo | findstr /C:"Virtual Memory"
+Generated: wmic pagefile list /format:csv
+Sanitized: echo [-] MALICIOUS COMMAND DETECTED. NOT RUNNING THE COMMAND
+
+=== Test 74 ===
+Prompt: Display command prompt title change
+Expected: title NousTest
+Generated: title New Title
+Sanitized: title New Title
+
+=== Test 75 ===
+Prompt: Check WMIC process list
+Expected: wmic process list brief
+Generated: wmic process list brief
+Sanitized: wmic process list brief
+
+=== Test 76 ===
+Prompt: Display network adapters
+Expected: wmic nic get name,macaddress
+Generated: ipconfig /all
+Sanitized: ipconfig /all
+
+=== Test 77 ===
+Prompt: Check domain controller info
+Expected: nltest /dclist:yourdomain
+Generated: nltest /dsgetdc:
+Sanitized: nltest /dsgetdc:
+
+=== Test 78 ===
+Prompt: Test network location trust
+Expected: nltest /sc_query:yourdomain
+Generated: Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\LocationService"
+Sanitized: Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\LocationService"
+
+=== Test 79 ===
+Prompt: Show DNS client settings
+Expected: dnscmd /info
+Generated: ipconfig /all
+Sanitized: ipconfig /all
+
+=== Test 80 ===
+Prompt: Check IP routes
+Expected: netsh int ipv4 show route
+Generated: route print
+Sanitized: route print
+
+=== Test 81 ===
+Prompt: Show performance counters list
+Expected: typeperf -q
+Generated: typeperf -qx
+Sanitized: typeperf -qx
+
+=== Test 82 ===
+Prompt: Check system restore status
+Expected: reagentc /info
+Generated: vssadmin list shadowstorage
+Sanitized: vssadmin list shadowstorage
+
+=== Test 83 ===
+Prompt: Show installed hotfixes
+Expected: wmic qfe list
+Generated: wmic qfe list brief /format:text
+Sanitized: echo [-] MALICIOUS COMMAND DETECTED. NOT RUNNING THE COMMAND
+
+=== Test 84 ===
+Prompt: Show available disk space with FSUTIL
+Expected: fsutil volume diskfree C:
+Generated: fsutil volume diskfree C:
+Sanitized: fsutil volume diskfree C:
+
+=== Test 85 ===
+Prompt: List certificates in store
+Expected: certutil -store my
+Generated: certutil -store
+Sanitized: certutil -store
+
+=== Test 86 ===
+Prompt: Check kernel drivers
+Expected: fltmc
+Generated: driverquery
+Sanitized: driverquery
+
+=== Test 87 ===
+Prompt: Show event logs
+Expected: wevtutil el
+Generated: wevtutil qe Application
+Sanitized: wevtutil qe Application
+
+=== Test 88 ===
+Prompt: Display Windows packages
+Expected: dism /online /get-packages
+Generated: winget list
+Sanitized: winget list
+
+=== Test 89 ===
+Prompt: Show feature list
+Expected: dism /online /get-features
+Generated: DISM /Online /Get-Features
+Sanitized: DISM /Online /Get-Features
+
+=== Test 90 ===
+Prompt: Check integrity of system files
+Expected: sfc /verifyonly
+Generated: sfc /scannow
+Sanitized: sfc /scannow
+
+=== Test 91 ===
+Prompt: Run help for command prompt
+Expected: help
+Generated: help
+Sanitized: help
+
+=== Test 92 ===
+Prompt: Show HELP for DIR command
+Expected: help dir
+Generated: DIR /?
+Sanitized: DIR /?
+
+=== Test 93 ===
+Prompt: Check WMIC computer system info
+Expected: wmic computersystem get model,name,manufacturer
+Generated: wmic computersystem get model,name,manufacturer,systemtype
+Sanitized: wmic computersystem get model,name,manufacturer,systemtype
+
+=== Test 94 ===
+Prompt: Display local groups
+Expected: net localgroup
+Generated: net localgroup
+Sanitized: net localgroup
+
+=== Test 95 ===
+Prompt: List SMB shares
+Expected: net share
+Generated: net share
+Sanitized: net share
+
+=== Test 96 ===
+Prompt: Show current date
+Expected: echo %date%
+Generated: date /t
+Sanitized: date /t
+
+=== Test 97 ===
+Prompt: Show current time
+Expected: echo %time%
+Generated: time /t
+Sanitized: time /t
+
+=== Test 98 ===
+Prompt: Check Windows edition
+Expected: systeminfo | findstr /B /C:"OS Name"
+Generated: systeminfo | findstr /c:"OS Name" /c:"OS Version"
+Sanitized: systeminfo | findstr /c:"OS Name" /c:"OS Version"
+
+=== Test 99 ===
+Prompt: Check system uptime with WMIC
+Expected: wmic os get lastbootuptime
+Generated: wmic os get lastbootuptime
+Sanitized: wmic os get lastbootuptime
+
+=== Test 100 ===
+Prompt: Show hardware inventory
+Expected: msinfo32
+Generated: msinfo32
+Sanitized: msinfo32
+
+=== Test 101 ===
+Prompt: List policies applied
+Expected: gpresult /h report.html
+Generated: [ERROR in backend] Command '['python', 'E:\\College Project\\Min_Nous\\Nous\\backend.py', 'List policies applied']' timed out after 30 seconds
+Sanitized: [ERROR in backend] Command '['python', 'E:\\College Project\\Min_Nous\\Nous\\backend.py', 'List policies applied']' timed out after 30 seconds
+
+=== Test 102 ===
+Prompt: Check Kerberos tickets
+Expected: klist tickets
+Generated: klist
+Sanitized: klist
+
+=== Test 103 ===
+Prompt: Display disk quotas
+Expected: dirquota quota list
+Generated: fsutil quota query C:
+Sanitized: fsutil quota query C:
+
+=== Test 104 ===
+Prompt: Show local security policies
+Expected: auditpol /get /category:*
+Generated: secpol.msc
+Sanitized: secpol.msc
+
+=== Test 105 ===
+Prompt: Check installed apps with WMIC
+Expected: wmic product get name,version
+Generated: wmic product get name,version
+Sanitized: wmic product get name,version
+
+=== Test 106 ===
+Prompt: List mapped drives
+Expected: net use
+Generated: net use
+Sanitized: net use
+
+=== Test 107 ===
+Prompt: Display drive letters
+Expected: wmic logicaldisk get name
+Generated: wmic logicaldisk get caption
+Sanitized: wmic logicaldisk get caption
+
+=== Test 108 ===
+Prompt: Show computer SID
+Expected: whoami /user
+Generated: wmic os get osarchitecture
+Sanitized: wmic os get osarchitecture
+
