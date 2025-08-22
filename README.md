@@ -53,6 +53,21 @@ It combines **AI command generation**, **TLS encryption**, and **hash-based obsc
 - **Security:** Hash-based identity, RSA keypair, TLS sockets  
 
 ---
+## 🧑‍🔧 STEPS TO INSTALL NOUS ON YOUR PC
+1. git clone the GitHub link of my project
+2. Open the project in visual studio
+3. Install dependencies --> Requirements.txt
+4. Run create_vector_db.py to create the vector database --> Only need to run it once
+5. Install MySQL and make the database, enter its details in IP. Update its username, database name, password and host in 1.api_server.py file and 2. IP hash manager.cs,update the paths to cert.pem/key.pem/log.txt wherever mentioned. 
+6. Build and Open Nous. 
+7. Start the server by clicking on start server. This should open a HTTP server on your host side
+8. ON THE CLIENT SIDE - Unzip Listener-v.2 (for running safe version of listener) OR Unzip Hyper-Listener-v.2 (for running administrator version of listener). 
+9. ON THE CLIENT SIDE - Update the IP address in listener file to that of the host and run the listener, also update the path to the cert.pem and key.pem . This should register your IP address on the SQL server on the host side, copy the hashcode viewed there.
+10. Now you're ready to use the Access Gate, Enter the hashcode from the listener with the prompt. 
+11. Click generate and the command will be generated, Ensure the command is safe and correct after generation and then you can send the command to the listeners.
+12. For any kind of errors or problems in execution, refer the LOG file, else contact me @swamiomkar262004@gmail.com | @omkar-swami-619788259 on linkedin| @0mkxrs on Instagram
+---
+
 
 ## ⚙️ How It Works  
 
