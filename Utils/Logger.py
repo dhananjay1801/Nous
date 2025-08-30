@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Logger:
     # Same path as your C# logger
-    Path = r"E:\College Project\Min_Nous\Nous\Log.txt"
+    Path = r"D:\Project stuff\Nous\Log.txt"
 
     @staticmethod
     def SWrite(message: str):

@@ -33,3 +33,9 @@ vector_db/
 
 #Ignore SQL DB
 *.sql
+
+#Ignore .env
+.env
+
+#Ignore certificate
+.cert

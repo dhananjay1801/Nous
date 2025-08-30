@@ -9,7 +9,7 @@ from Utils.Logger import Logger
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'root',  # Change this to your MySQL password
+    'password': 'admin',  # Change this to your MySQL password
     'database': 'project'
 }
 

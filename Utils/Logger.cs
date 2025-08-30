@@ -11,7 +11,7 @@ namespace Nous.Utils
 {
     internal class Logger
     {
-            public static string Path = @"E:\College Project\Min_Nous\Nous\Log.txt";
+            public static string Path = @"D:\Project stuff\Nous\Log.txt";
 
             public static void SWrite(string message)
             {

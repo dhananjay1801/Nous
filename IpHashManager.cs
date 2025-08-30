@@ -10,7 +10,7 @@ namespace Nous
     public class IpHashManager
     {
         //UPDATE THE PASSWORD HEREEE
-        private readonly string _connectionString = "server=localhost;user=root;password=root;database=project;";
+        private readonly string _connectionString = "server=localhost;user=root;password=admin;database=project;";
 
         public string GenerateHash(string ip)
         {

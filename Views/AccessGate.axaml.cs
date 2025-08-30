@@ -85,14 +85,14 @@ namespace Nous.Views
             }
 
             Logger.SWrite($"Generate_Click received prompt: {prompt}");
-            string command = await RunPython("backend.py", $"\"{prompt}\"", @"E:\College Project\Additions\Nous\Nous\");
+            string command = await RunPython("backend.py", $"\"{prompt}\"", @"D:\Project stuff\Nous");
             if (string.IsNullOrEmpty(command))
             {
                 Logger.EWrite("backend.py returned empty command.");
                 return;
             }
 
-            string sanitized = await RunPython("sanitizer.py", $"\"{command}\"", @"E:\College Project\Min_Nous\Nous\");
+            string sanitized = await RunPython("sanitizer.py", $"\"{command}\"", @"D:\Project stuff\Nous");
             if (string.IsNullOrEmpty(sanitized))
             {
                 Logger.EWrite("sanitizer.py returned empty output.");

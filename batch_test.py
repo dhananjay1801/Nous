@@ -3,10 +3,10 @@ import subprocess
 import os
 
 # Paths to your existing programs
-BACKEND_PATH = r"E:\College Project\Min_Nous\Nous\backend.py"
-SANITIZER_PATH = r"E:\College Project\Min_Nous\Nous\Sanitizer.py"
+BACKEND_PATH = r"D:\Project stuff\Nous\backend.py"
+SANITIZER_PATH = r"D:\Project stuff\Nous\Sanitizer.py"
 
-CSV_FILE = r"E:\College Project\Min_Nous\Nous\Utils\cmd_prompts.csv"  # update if needed
+CSV_FILE = r"D:\Project stuff\Nous\Utils\cmd_prompts.csv"  # update if needed
 OUTPUT_FILE = r"results.txt"
 
 def run_backend(prompt):

@@ -1,4 +1,16 @@
 requests
-ollama
 beautifulsoup4
 ipython
+pyyaml
+python-dotenv
+groq
+langchain
+langchain-core
+langchain-community
+langchain-google-genai
+google-generativeai
+flask
+flask-cors
+mysql-connector-python
+ollama
+faiss-cpu
