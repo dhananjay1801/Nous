@@ -1,9 +1,14 @@
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 from datetime import datetime
 
+load_dotenv()
+BASE_PATH = Path(os.getenv("BASE_PATH", Path(__file__).resolve().parents[1]))
+
 class Logger:
-    # Same path as your C# logger
-    Path = r"D:\Project stuff\Nous\Log.txt"
+    # Same path as your C# logger (built from BASE_PATH)
+    Path = str(BASE_PATH / "Log.txt")
 
     @staticmethod
     def SWrite(message: str):

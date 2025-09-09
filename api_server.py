@@ -4,13 +4,24 @@ import mysql.connector
 import hashlib
 from datetime import datetime
 from Utils.Logger import Logger
+import os
+from dotenv import load_dotenv
 
-# Database configuration
+# Load env (for local/dev) and read database configuration
+load_dotenv()
+
+def _require_env(key: str) -> str:
+    val = os.getenv(key)
+    if not val:
+        raise RuntimeError(f"Missing required environment variable: {key}")
+    return val
+
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'admin',  # Change this to your MySQL password
-    'database': 'project'
+    'host': _require_env('DB_HOST'),
+    'user': _require_env('DB_USER'),
+    'password': _require_env('DB_PASSWORD'),
+    'database': _require_env('DB_NAME'),
+    'port': int(_require_env('DB_PORT'))
 }
 
 app = Flask(__name__)

@@ -1,5 +1,6 @@
 ﻿import sys
 import os
+from pathlib import Path
 import requests
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
@@ -8,9 +9,10 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGener
 from datetime import datetime
 
 # -----------------------------------------------------------
-# Logging setup (fixed)
+# Logging setup (uses BASE_PATH from .env if available)
 # -----------------------------------------------------------
-LOG_PATH = r"D:\Project stuff\Nous\Log.txt"
+BASE_PATH = Path(os.getenv("BASE_PATH", Path(__file__).resolve().parent))
+LOG_PATH = str(BASE_PATH / "Log.txt")
 
 def _ensure_log_file():
     """Ensure that the log directory and file exist."""

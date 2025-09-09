@@ -4,6 +4,7 @@ using Nous;
 using System;
 using System.Linq;
 using Nous.Utils;
+using System.IO;
 namespace Nous
 {
     class Program
@@ -15,6 +16,8 @@ namespace Nous
         {
             try
             {
+                // Load environment variables from .env at startup (no external deps)
+                try { LoadEnv(); } catch { }
                 Logger.SWrite("Application Started");
 
                 if (args.Length > 0)
@@ -69,6 +72,47 @@ namespace Nous
                         desktop.Exit += (_, __) => Logger.SWrite("Application Exit Event Triggered");
                     }
                 });
+        }
+
+        private static void LoadEnv()
+        {
+            string? envFile = FindEnvFile();
+            if (envFile == null) return;
+
+            foreach (var rawLine in File.ReadAllLines(envFile))
+            {
+                var line = rawLine.Trim();
+                if (string.IsNullOrEmpty(line)) continue;
+                if (line.StartsWith("#")) continue;
+
+                int eq = line.IndexOf('=');
+                if (eq <= 0) continue;
+
+                var key = line.Substring(0, eq).Trim();
+                var value = line.Substring(eq + 1).Trim();
+
+                // Remove optional surrounding quotes
+                if ((value.StartsWith("\"") && value.EndsWith("\"")) || (value.StartsWith("'") && value.EndsWith("'")))
+                {
+                    value = value.Substring(1, value.Length - 2);
+                }
+
+                if (key.Length == 0) continue;
+                Environment.SetEnvironmentVariable(key, value);
+            }
+        }
+
+        private static string? FindEnvFile()
+        {
+            // Search upward from the executable directory for a .env file
+            string? dir = AppContext.BaseDirectory;
+            for (int i = 0; i < 5 && dir != null; i++)
+            {
+                var candidate = Path.Combine(dir, ".env");
+                if (File.Exists(candidate)) return candidate;
+                dir = Directory.GetParent(dir)?.FullName;
+            }
+            return null;
         }
     }
 }

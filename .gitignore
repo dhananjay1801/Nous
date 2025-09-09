@@ -31,8 +31,6 @@ vector_db/
 *.faiss
 *.pkl
 
-#Ignore SQL DB
-*.sql
 
 #Ignore .env
 .env

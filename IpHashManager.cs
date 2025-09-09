@@ -9,8 +9,27 @@ namespace Nous
 {
     public class IpHashManager
     {
-        //UPDATE THE PASSWORD HEREEE
-        private readonly string _connectionString = "server=localhost;user=root;password=admin;database=project;";
+        private readonly string _connectionString;
+
+        public IpHashManager()
+        {
+            // Mirror api_server.py behavior: require individual env vars, no defaults
+            string host = RequireEnv("DB_HOST");
+            string user = RequireEnv("DB_USER");
+            string password = RequireEnv("DB_PASSWORD");
+            string database = RequireEnv("DB_NAME");
+            string port = RequireEnv("DB_PORT");
+
+            _connectionString = $"server={host};port={port};user={user};password={password};database={database};";
+        }
+
+        private static string RequireEnv(string key)
+        {
+            var value = Environment.GetEnvironmentVariable(key);
+            if (string.IsNullOrWhiteSpace(value))
+                throw new InvalidOperationException($"Missing required environment variable: {key}");
+            return value;
+        }
 
         public string GenerateHash(string ip)
         {

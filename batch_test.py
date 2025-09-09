@@ -1,12 +1,17 @@
 import csv
 import subprocess
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 
-# Paths to your existing programs
-BACKEND_PATH = r"D:\Project stuff\Nous\backend.py"
-SANITIZER_PATH = r"D:\Project stuff\Nous\Sanitizer.py"
+load_dotenv()
+BASE_PATH = Path(os.getenv("BASE_PATH", Path(__file__).resolve().parent))
 
-CSV_FILE = r"D:\Project stuff\Nous\Utils\cmd_prompts.csv"  # update if needed
+# Paths to your existing programs (built from BASE_PATH)
+BACKEND_PATH = str(BASE_PATH / "backend.py")
+SANITIZER_PATH = str(BASE_PATH / "Sanitizer.py")
+
+CSV_FILE = str(BASE_PATH / "Utils" / "cmd_prompts.csv")  # update if needed
 OUTPUT_FILE = r"results.txt"
 
 def run_backend(prompt):

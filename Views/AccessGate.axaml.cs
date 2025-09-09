@@ -85,14 +85,15 @@ namespace Nous.Views
             }
 
             Logger.SWrite($"Generate_Click received prompt: {prompt}");
-            string command = await RunPython("backend.py", $"\"{prompt}\"", @"D:\Project stuff\Nous");
+            var basePath = Environment.GetEnvironmentVariable("BASE_PATH") ?? AppContext.BaseDirectory;
+            string command = await RunPython("backend.py", $"\"{prompt}\"", basePath);
             if (string.IsNullOrEmpty(command))
             {
                 Logger.EWrite("backend.py returned empty command.");
                 return;
             }
 
-            string sanitized = await RunPython("sanitizer.py", $"\"{command}\"", @"D:\Project stuff\Nous");
+            string sanitized = await RunPython("sanitizer.py", $"\"{command}\"", basePath);
             if (string.IsNullOrEmpty(sanitized))
             {
                 Logger.EWrite("sanitizer.py returned empty output.");
