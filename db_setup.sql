@@ -3,3 +3,5 @@ CREATE TABLE IF NOT EXISTS ip_hash (
     hashcode VARCHAR(64) NOT NULL UNIQUE,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- You can add custom table name by replacing "ip_hash"
